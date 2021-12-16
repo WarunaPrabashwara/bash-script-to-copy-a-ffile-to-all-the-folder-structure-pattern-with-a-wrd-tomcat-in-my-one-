@@ -1,0 +1,1 @@
+# bash-script-to-copy-a-ffile-to-all-the-folder-structure-pattern-with-a-wrd-tomcat-in-my-one-
