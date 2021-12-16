@@ -1,0 +1,90 @@
+file ekak /root/a wala tyena siyalu tomcat adangu [ abctomcat , tomcat , tomcatfda wage] folder athule webaps wala tyena siyau folder wala class kiyana folder ekata copy karana bash script eka 
+
+root/a eke 
+tomcatbanca , abctomcat , tomcat , tomcat2   wage folder 4 k hadanna . thawa mokak hari namkin amathara ekakuth hadanna nattham eekata yanne nah kiyala prove karanne kohomada
+tomcat2 hara anith ewage webapps kiyala folder eka hadanna 
+tomcat hara anith deke folder dekak hadanna webapps athule 
+project1 , project2 wage nam daanna 
+tomcatbanca eke project1  hara 
+tomcatbanca/project2 saha 
+abctomcat/project1 and 2 deke 
+class
+folder eka hadanna 
+
+dan 
+touch /root/abc.txt karanna 
+
+
+
+mulin ape directory eka dena variable ekak hadanna 
+ee directory eka tyenwada kiyala iff ekkin balanna
+tyenam wirarak eeke tyena %tomcat% directories array ekkata ganna 
+array eka empty nattham ee folder athule webapp walata yanna for loop eke n 
+eka athule folder tyenwada balnn 
+tyenwanm eke class/lib  kiyala directory ekak tyenwada balala tyenwanm ekata athulata bash script eka run karana thaninma ho wena thanakin ganna file ekak cp karala dapn 
+
+
+
+#!/bin/bash
+filewithpathtocopy=/root/abc.txt
+keywordforfolderpatern=tomcat
+homedirectorytofolderset=/root/a
+dirlist=(`ls -d ${homedirectorytofolderset}/*${keywordforfolderpatern}*/`)
+echo $dirlist
+echo ${dirlist[*]}
+#echo "${dirlist[@]}"
+#echo ${dirlist[@]}
+if (( ${#dirlist[@]} )); then
+    for ((i=0; i < ${#dirlist[@]}; i++))
+    do
+        echo "hooo"
+        if [[ -d "${dirlist[$i]}"webapps ]]
+            then
+                echo "webapps exists on your file."
+                dirlist2=(`ls -d ${dirlist[$i]}webapps/*/`)
+                if (( ${#dirlist2[@]} )); then
+                    for ((j=0; j < ${#dirlist2[@]}; j++))
+                    do
+                        if [[ -d "${dirlist2[$j]}"class ]]
+                            then
+                                cp  -R -u -p  $filewithpathtocopy "${dirlist2[$j]}"class
+                        else
+                            echo "${dirlist2[$j]} /class folder doesnt exist"
+                        fi
+                    done
+                else
+                    echo "${dirlist[i]} webapps folder doesnt have any folder"
+                fi
+        else
+            echo "${dirlist[i]}  folder doesnt have webapps folder"
+        fi
+    done
+else
+    echo "no any directory with that pieace of word"
+fi
+
+
+
+
+
+meka run karaddi samahaa wita folder structure eka anuwa 
+webapps exists on your file.
+ls: cannot access /root/a/tomcat/webapps/*/: No such file or directory
+wage error ekak enna pluwan 
+eeka gannan ganna epa 
+eka aulak newe 
+
+
+
+
+
+vi /root/bash.sh
+chmod u+x /root/bash.sh
+./root/bash.sh		[ mehema run karanna baha ]
+cd /root
+./bash.sh
+
+
+
+
+
